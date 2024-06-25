@@ -18,13 +18,13 @@ public class UserController {
 
     @PostMapping("/users/signup")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
-
         String msg = userService.join(user);
-
         return new ResponseEntity<String>(msg, HttpStatus.OK);
     }
 
+    @PostMapping("/users/login")
     public ResponseEntity<String> loginUser(@RequestBody User user) {
-
+        String msg = userService.login(user);
+        return new ResponseEntity<String>(msg, HttpStatus.OK);
     }
 }
