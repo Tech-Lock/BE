@@ -1,4 +1,13 @@
 package techLock.techLock.repository;
 
-public class LogRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import techLock.techLock.entity.Log;
+
+import java.util.Optional;
+
+public interface LogRepository extends JpaRepository<Log, Long> {
+
+    Optional<Log> findByDate(String date);
+
+    Log deleteByDate(String date);
 }
