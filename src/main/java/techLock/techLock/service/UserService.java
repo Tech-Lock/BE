@@ -22,7 +22,7 @@ public class UserService {
 
     // 중복 회원 검증
     private String validateDuplicateUser(User user) {
-        User foundUser = userRepository.findByName(user.getName());
+        User foundUser = userRepository.findByEmail(user.getEmail());
         if (foundUser != null) {
             return "이미 가입된 회원입니다.";
         } else {
@@ -32,7 +32,7 @@ public class UserService {
 
     // 로그인
     public String login(User user) {
-        User foundUser = userRepository.findByName(user.getName());
+        User foundUser = userRepository.findByEmail(user.getEmail());
         if ((foundUser != null) && (foundUser.getPassword().equals(user.getPassword()))) {
             return "로그인 성공";
         } else {
