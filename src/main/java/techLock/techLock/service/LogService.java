@@ -16,24 +16,24 @@ public class LogService {
     private LogRepository logRepository;
 
     // 로그 전체 조회
-    public List<Log> findAllLogs() {
+    public List<Log> findAll() {
         return logRepository.findAll();
     }
 
     // 단건 조회
-    public Optional<Log> findLogByDate(String date) {
+    public Optional<Log> findOne(String date) {
         return logRepository.findByDate(date);
     }
 
     // 로그 추가
-    public Log createLog(Log log) {
+    public Log create(Log log) {
         return logRepository.save(log);
     }
 
     // 로그 삭제
     @Transactional
-    public Log deleteLog(String date) {
-        return logRepository.deleteByDate(date);
+    public void delete(String date) {
+        logRepository.deleteByDate(date);
     }
 
 }

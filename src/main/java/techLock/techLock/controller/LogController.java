@@ -17,21 +17,21 @@ public class LogController {
 
     @GetMapping("/log")
     public List<Log> logList() {
-        return logService.findAllLogs();
+        return logService.findAll();
     }
 
     @GetMapping("/log/{date}")
     public Optional<Log> logDetail(@PathVariable("date") String date) {
-        return logService.findLogByDate(date);
+        return logService.findOne(date);
     }
 
     @PostMapping("/log/create")
-    public Log logCreate(@RequestBody Log log) {
-        return logService.createLog(log);
+    public Log createLog(@RequestBody Log log) {
+        return logService.create(log);
     }
 
     @DeleteMapping("/log/delete/{date}")
-    public Log logDelete(@PathVariable("date") String date) {
-        return logService.deleteLog(date);
+    public void deleteLog(@PathVariable("date") String date) {
+        logService.delete(date);
     }
 }

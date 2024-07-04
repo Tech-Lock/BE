@@ -9,5 +9,5 @@ public interface LogRepository extends JpaRepository<Log, Long> {
 
     Optional<Log> findByDate(String date);
 
-    Log deleteByDate(String date);
+    void deleteByDate(String date);
 }
