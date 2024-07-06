@@ -28,5 +28,4 @@ public class DoorController {
     public boolean closeDoor() {
         return doorService.closeDoor();
     }
-
 }
