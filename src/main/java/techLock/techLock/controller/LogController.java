@@ -21,7 +21,7 @@ public class LogController {
     }
 
     @GetMapping("/log/{date}")
-    public Optional<Log> logDetail(@PathVariable("date") String date) {
+    public Optional<Log> findLog(@PathVariable("date") String date) {
         return logService.findOne(date);
     }
 

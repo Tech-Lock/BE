@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.RestController;
 import techLock.techLock.service.DoorService;
 
 @RestController
-@RequestMapping("/main/door")
+@RequestMapping("/main")
 public class DoorController {
 
     @Autowired
     private DoorService doorService;
 
-    @PostMapping("/open")
+    @GetMapping("/door")
+    public boolean getDoorStatus() {
+        return doorService.getDoorStatus();
+    }
+
+    @PostMapping("/door/open")
     public boolean openDoor() {
         return doorService.openDoor();
     }
 
-    @PostMapping("/close")
+    @PostMapping("/door/close")
     public boolean closeDoor() {
         return doorService.closeDoor();
-    }
-
-    @GetMapping("/status")
-    public boolean getDoorStatus() {
-        return doorService.getDoorStatus();
     }
 }
