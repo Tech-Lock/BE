@@ -21,19 +21,16 @@ public class UserService {
     }
 
     // 중복 회원 검증
-    private String validateDuplicateUser(User user) {
-        User foundUser = userRepository.findByEmail(user.getEmail());
-        if (foundUser != null) {
-            return "이미 가입된 회원입니다.";
-        } else {
-            return null;
+    private void validateDuplicateUser(User user) {
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
 
     // 로그인
     public String login(User user) {
-        User foundUser = userRepository.findByEmail(user.getEmail());
-        if ((foundUser != null) && (foundUser.getPassword().equals(user.getPassword()))) {
+        Optional<User> foundUser = userRepository.findByEmail(user.getEmail());
+        if ((foundUser.isPresent()) && (foundUser.get().getPassword().equals(user.getPassword()))) {
             return "로그인 성공";
         } else {
             return "아이디 또는 비밀번호가 잘못 되었습니다.";
