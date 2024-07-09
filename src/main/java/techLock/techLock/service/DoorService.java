@@ -10,11 +10,13 @@ public class DoorService {
 
     public boolean openDoor() {
         isOpen = true;
+        System.out.println("opened");
         return isOpen;
     }
 
     public boolean closeDoor() {
         isOpen = false;
+        System.out.println("closed");
         return isOpen;
     }
 
