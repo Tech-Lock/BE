@@ -33,7 +33,7 @@ public class UserService {
         if ((foundUser.isPresent()) && (foundUser.get().getPassword().equals(user.getPassword()))) {
             return "로그인 성공";
         } else {
-            return "아이디 또는 비밀번호가 잘못 되었습니다.";
+            throw new IllegalStateException("로그인 실패");
         }
     }
 }
