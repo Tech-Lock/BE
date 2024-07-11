@@ -2,9 +2,11 @@ package techLock.techLock.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import techLock.techLock.entity.Log;
 import techLock.techLock.entity.User;
 import techLock.techLock.repository.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -12,6 +14,11 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    // 회원 목록 조회
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
 
     // 회원 가입
     public String join(User user) {
